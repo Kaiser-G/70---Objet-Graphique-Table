@@ -29,35 +29,40 @@ class Table {
 
       //création du thead
       let thead = document.createElement("thead"); // un seul par tableau
-      thead = this.header;
-      let tr = document.createElement("tr"); //que pour les lignes
-      let colonne = this.header;
-      for (let i = 1; i <= colonne; i++) {
-        let th = document.createElement("th"); //ligne 1 pour les titres en gras, colonne
-        th = this.data.value[0];
-        th.innerText = "" + i;
-        tr.appendChild(th);
-        thead.appendChild(tr);
+      tab.appendChild(thead);
+
+      //génération des colonnes du head
+      let tr_head = document.createElement("tr"); //que pour les lignes
+      thead.appendChild(tr_head);
+      this.header.forEach((th_text) => {
+        let th = document.createElement("th");
+        th.innerText = th_text;
+        tr_head.appendChild(th);
+      });
+
+      // si on reçu des fonctions pour MODIF ou SUPPR permet d'ajouter la colonne ACTIONS
+      if (this.fonction_modif || this.fonction_suppr || this.fonction_vue) {
+        let th = document.createElement("th");
+        th.innerText = "Actions";
+        tr_head.appendChild(th);
       }
-      let th = document.createElement("th");
-      th.innerText = "";
-      tr.appendChild(th);
-      // tab.appendChild(thead);
 
       //création du body
-      let body = document.createElement("tbody"); //un seul par tableau qui contient :tr > td
-      tab.appendChild(body);
-      let ligne = this.data;
-      for (let index = 1; index <= ligne; index++) {
-        let tr = document.createElement("tr"); //que pour les lignes
-        tr = this.data.value[1];
+      let tbody = document.createElement("tbody"); //un seul par tableau qui contient :tr > td
+      tab.appendChild(tbody);
 
-        for (let j = 1; j <= colonne; j++) {
-          let td = document.createElement("td"); //pour les lignes suivantes dans un tr, colonne
-          td.innerText = "L " + index + " C " + j;
-          tr.appendChild(td);
-        }
-      }
+      //création des lignes dans body
+      this.data.forEach((item) => {
+        let tr_body = document.createElement("tr");
+        tbody.appendChild(tr_body);
+        //généré des cellules de la ligne
+        item.forEach((cellule) => {
+          let td = document.createElement("td");
+          td.innerText = cellule;
+          tr_body.appendChild(td);
+        });
+      });
+
       zone.appendChild(tab);
     }
   }
