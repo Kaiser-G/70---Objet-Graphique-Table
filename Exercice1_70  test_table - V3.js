@@ -24,24 +24,15 @@ class Table {
   //générer
   generer() {
     if (this.id_zone != "") {
-      let tab = document.createElement("table");
-      tab.className = this.class_table;
-      let tblbody = document.createElement("tbody");
+      let tbody = document.querySelector(this.id_zone).querySelector("tbody");
 
-      if (this.data != "") {
-        this.data.forEach((value) => {
-          let option = document.createElement("tr");
-          option.innerHTML = value[1];
-          option.value = value[0];
-          tab.appendChild(option);
-        });
+      for (let i = 0; i < this.data.length; i++) {
+        let ligne = tbody.insertRow();
+
+        let cellData = ligne.insertCell();
+        cellData.innerHtml = data[0].value;
+        cellData.innerHtml = data[1].value;
       }
-
-      document.getElementById(this.id_zone).appendChild(tblbody);
-    } else {
-      throw new Error(
-        "Pour générer une table, il faut préciser la proprieté id_zone"
-      );
     }
   }
 }
