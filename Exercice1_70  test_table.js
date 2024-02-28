@@ -61,6 +61,43 @@ class Table {
           td.innerText = cellule;
           tr_body.appendChild(td);
         });
+        //création des boutons
+        //bouton vue
+        let td = document.createElement("td");
+        tr_body.appendChild(td);
+        let btn = document.createElement("button");
+        btn.className = "vueRegion btn btn-danger btn-sm fas fa-eye fa-sm";
+        td.appendChild(btn);
+        btn.addEventListener("click", (e) => {
+          alert("bouton vue");
+        });
+
+        //création modif
+        let btn2 = document.createElement("button");
+        btn2.className = "vueRegion btn btn-success btn-sm fas fa-pencil fa-sm";
+        td.appendChild(btn2);
+        btn2.addEventListener("click", (e) => {
+          alert("bouton modif");
+        });
+
+        //création suppr
+        let btn3 = document.createElement("button");
+        btn3.className = "vueRegion btn btn-info btn-sm fas fa-trash fa-sm";
+        td.appendChild(btn3);
+        btn3.addEventListener("click", (e) => {
+          alert("bouton supp");
+        });
+
+        //création des boutons
+        //bouton vue
+        // if (this.fonction_vue == "fonction") {
+        //   let btn = document.createElement("button");
+        //   btn.className = "vueRegion btn btn-success btn-sm fas fa-eye fa-sm";
+        //   btn.addEventListener("click", (e) => {
+        //     alert("bouton vue");
+        //     td.appendChild(btn);
+        //   });
+        // }
       });
 
       zone.appendChild(tab);
