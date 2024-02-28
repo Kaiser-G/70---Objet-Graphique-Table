@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 1</title>
+    <!-- CDN CSS de BOOTSTRAP  -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+
+    <!-- CDN de FONTAWSOME pour les ICONES  -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+
+<body>
+    <h1>Exercice 1 (70 test_table.html) V2</h1>
+
+    <div id="zone"></div>
+
+
+
+
+    <!-------------------------------------
+    		CDN JS pour BOOTSTRAP  
+    	--------------------------------------->
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <!-------------------------------------
+    		Nos fichiers JS  
+    	--------------------------------------->
+    <script src="Exercice1_70  test_table - V2.js"></script>
+    <script>
+        //function_modif
+        function modifRegion() {
+            alert("Click sur modif region");
+        }
+
+        //function_vue
+        function vueRegion() {
+            alert("Click sur vue region");
+        }
+
+        //fonction_suppr
+        function supprRegion() {
+            alert("Click sur supp region");
+        }
+
+        window.addEventListener("load", (event) => {
+            //création de new class
+            let tab = new Table();
+            tab.id_zone = "zone";
+            tab.class_table = "table table-dark table_hover";
+            //version avec 2 colonnes
+            tab.data = [[1, "Centre Val de Loire"],
+            [2, "Bretagne"], [3, "Languedoc"], [4, "Corse"], [5, "Alsace"], [6, "Auvergne"], [8, "Rhone Alpes"], [9, "Normandie"], [11, "POLOGNE"]];
+            tab.header = ["Code", "Nom"];
+            tab.class_modif = "mod_region";
+            tab.class_suppr = "suppr_region";
+            tab.class_vue = "VueRegion";
+
+            //BS
+            tab.icone_vue = "btn btn-success btn-sm bi bi-eye";
+            tab.icone_modif = "btn btn-info btn-sm bi bi-pencil";
+            tab.icone_suppr = "btn btn-danger btn-sm bi bi-trash3";
+
+            //Les méthodes
+            tab.fonction_modif = modifRegion;
+            tab.fonction_suppr = supprRegion;
+            tab.fonction_vue = vueRegion;
+
+            tab.separateur = "*";
+            tab.generer();
+        }, false);
+
+    </script>
+</body>
+
+</html>
