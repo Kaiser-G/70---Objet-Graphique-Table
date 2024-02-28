@@ -28,11 +28,11 @@ class Table {
       tab.className = this.class_table;
 
       //création du thead
-      let thead = document.createElement("thead"); // un seul par tableau
+      let thead = document.createElement("thead");
       tab.appendChild(thead);
 
       //génération des colonnes du head
-      let tr_head = document.createElement("tr"); //que pour les lignes
+      let tr_head = document.createElement("tr"); // pour les lignes
       thead.appendChild(tr_head);
       this.header.forEach((th_text) => {
         let th = document.createElement("th");
@@ -48,7 +48,7 @@ class Table {
       }
 
       //création du body
-      let tbody = document.createElement("tbody"); //un seul par tableau qui contient :tr > td
+      let tbody = document.createElement("tbody");
       tab.appendChild(tbody);
 
       //création des lignes dans body
@@ -64,6 +64,10 @@ class Table {
       });
 
       zone.appendChild(tab);
+    } else {
+      throw new Error(
+        "Pour générer une table, il faut préciser la proprieté id_zone"
+      );
     }
   }
 }
