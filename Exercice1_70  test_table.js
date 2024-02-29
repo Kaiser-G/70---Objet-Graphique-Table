@@ -4,11 +4,11 @@ class Table {
   data = [];
   header = "";
   class_modif = "";
-  class_supp = "";
+  class_suppr = "";
   class_vue = "";
   icone_modif = "";
   icone_vue = "";
-  icone_supp = "";
+  icone_suppr = "";
   separateur = "*";
 
   // Les méthodes
@@ -55,7 +55,7 @@ class Table {
       this.data.forEach((item) => {
         let tr_body = document.createElement("tr");
         tbody.appendChild(tr_body);
-        //généré des cellules de la ligne
+        //généré des cellules de la ligne (colonnes)
         item.forEach((cellule) => {
           let td = document.createElement("td");
           td.innerText = cellule;
@@ -77,7 +77,7 @@ class Table {
           // alert(values);
           if (typeof this.fonction_vue == "function") {
             let btn = document.createElement("button");
-            btn.className = this.icone_vue;
+            btn.className = this.class_vue + this.icone_vue;
             //btn.className = "vueRegion btn btn-danger btn-sm fas fa-eye fa-sm";
             btn.value = values;
 
@@ -91,11 +91,11 @@ class Table {
             td.appendChild(btn);
           }
 
-          //création modif
+          //création bouton modif
           if (typeof this.fonction_modif == "function") {
             let btn2 = document.createElement("button");
-            btn2.className =
-              "vueRegion btn btn-success btn-sm fas fa-pencil fa-sm";
+            btn2.className = this.class_modif + this.icone_modif;
+            // btn2.className = "btn btn-success btn-sm fas fa-pencil fa-sm";
             btn2.value = values;
             btn2.addEventListener(
               "click",
@@ -107,10 +107,11 @@ class Table {
             td.appendChild(btn2);
           }
 
-          //création suppr
+          //création bouton suppr
           if (typeof this.fonction_suppr == "function") {
             let btn3 = document.createElement("button");
-            btn3.className = "vueRegion btn btn-info btn-sm fas fa-trash fa-sm";
+            btn3.className = this.class_suppr + this.icone_suppr;
+            // btn3.className ="btn btn-info btn-sm fas fa-trash fa-sm";
             btn3.value = values;
             btn3.addEventListener(
               "click",
@@ -123,9 +124,9 @@ class Table {
           }
         }
       });
-
-      // document.getElementById(this.id_zone).appendChild(tab);
-      zone.appendChild(tab);
+      //affiche le tableau
+      document.getElementById(this.id_zone).appendChild(tab);
+      // zone.appendChild(tab);
     } else {
       throw new Error(
         "Pour générer une table, il faut préciser la proprieté id_zone"
